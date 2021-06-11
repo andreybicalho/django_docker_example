@@ -1,11 +1,15 @@
-# 1
+# django_docker_example
+
+Simple docker tutorial for python projects using django.
+
+## 1
 * Django setup
 ```
 docker-compose run web django-admin startproject djangoProjExample .
 ```
 
-# 2
-* open `djangoProjName/settings.py` file and change the database configs accordingly (see db service in docker-compose.yaml):
+## 2
+* open `djangoProjName/settings.py` file and change the database configs accordingly (see db service in `docker-compose.yaml`):
 ```
 DATABASES = {
     'default': {
@@ -24,7 +28,7 @@ and run:
 docker-compose up
 ```
 
-# 3
+## 3
 * fix missing depencies in `requirements.txt` by adding the `psycopg2-binary>=2.8` dependency and run:
 ```
 docker-compose build
@@ -42,7 +46,7 @@ docker-compose up
 
 * development server will run at `http://localhost:8000/`
 
-# 5
+## 4
 * creating an application with django
 ```
 docker-compose run web python manage.py startapp my_cool_app
@@ -77,7 +81,7 @@ def index(request):
     return render(request, "index.html")
 ```
 
-* create a `urls.py` file in the my_cool_app direcotry and put the code below:
+* create a `urls.py` file in the `my_cool_app` direcotry and put the code below:
 ```
 from django.urls import path
 from . import views
@@ -88,7 +92,7 @@ urlpatterns = [
 ]
 ```
 
-# 6
+## 5
 * from djangoProjeExample open `settings.py` and add the application
 ```
 INSTALLED_APPS = [
@@ -113,12 +117,7 @@ urlpatterns = [
 ]
 ```
 
-* update
-```
-docker-compose build
-```
-
-* or alternatively, since we want to run the application from docker after updating we can use this shortcut:
+* update:
 ```
 docker-compose up --build
 ```
